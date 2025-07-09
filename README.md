@@ -49,7 +49,7 @@ NEWANSIBLEWEBSERVER/
    python3 -m venv venv
    source venv/bin/activate
    pip install ansible
-````
+``
 
 Make sure you also install Azure-related Python packages.
 
