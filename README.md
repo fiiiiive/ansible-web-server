@@ -83,7 +83,6 @@ Make sure you also install Azure-related Python packages.
    ansible-playbook test_azure.yml
    ```
 
----
 
 ## What I Learned
 
