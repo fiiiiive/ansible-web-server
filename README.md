@@ -98,7 +98,7 @@ This project taught me how to:
 
 ---
 
-## How It Handles Sensitive Stuff
+## How It Handles Sensitive Files
 
 * The `.gitignore` makes sure things like `venv/`, `inventory.ini`, and variables don’t get committed.
 * No real credentials or SSH keys are included here.
@@ -106,7 +106,7 @@ This project taught me how to:
 
 ---
 
-## Ideas for Future Improvements
+## Plans for Future Improvements
 
 * Encrypt secrets with Ansible Vault
 * Add CI/CD workflows (like GitHub Actions) to run playbooks automatically
