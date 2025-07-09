@@ -1,0 +1,62 @@
+---
+# Update apt cache
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+# Install Nginx
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+# Ensure Nginx is running
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+# Create a deploy user
+- name: Create deploy user
+  user:
+    name: "{{ deploy_user }}"
+    shell: /bin/bash
+
+# Add SSH key for deploy user
+- name: Add authorized key for deploy user
+  authorized_key:
+    user: "{{ deploy_user }}"
+    key: "{{ lookup('file', '~/.ssh/pubkey.pub') }}"
+
+# Install UFW
+- name: Install UFW firewall
+  apt:
+    name: ufw
+    state: present
+
+# Allow SSH
+- name: Allow SSH in UFW
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+# Allow HTTP
+- name: Allow HTTP in UFW
+  ufw:
+    rule: allow
+    port: '80'
+    proto: tcp
+
+# Enable UFW
+- name: Enable UFW with default deny
+  ufw:
+    state: enabled
+    policy: deny
+
+# Deploy custom index.html
+- name: Deploy index.html
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: Restart Nginx

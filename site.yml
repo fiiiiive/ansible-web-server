@@ -1,0 +1,6 @@
+---
+- name: Configure Web Server and Security
+  hosts: azurevm
+  become: yes
+  roles:
+    - webserver

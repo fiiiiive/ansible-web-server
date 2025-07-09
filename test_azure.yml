@@ -1,0 +1,13 @@
+- name: Test Azure Connection and List Resource Groups
+  hosts: localhost
+  connection: local
+  vars:
+    ansible_python_interpreter: /mnt/c/Users/ejrey/newansiblewebserver/venv/bin/python
+  tasks:
+    - name: List resource groups
+      azure_rm_resourcegroup_info:
+      register: rg_info
+
+    - name: Show resource groups
+      debug:
+        var: rg_info

@@ -1,0 +1,26 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Ansible retry files
+*.retry
+
+# Ignore virtual environment
+venv/
+ENV/
+env/
+
+# Ignore VSCode settings (optional)
+.vscode/
+
+# Ignore Ansible vault files (if you use them)
+*.vault.yml
+*.vault
+
+# Ignore any local inventory files you don't want shared
+inventory.ini
+
+
+# Ignore any backup files
+*~
